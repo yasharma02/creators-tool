@@ -12,6 +12,23 @@ code {
     monospace;
 }
 
+/* input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  font-size: 16px;
+  width: 100%;
+  border-color: rgba(4, 4, 5, 0.1);
+  line-height: 32px;
+}
+
+input:focus {
+  outline: none;
+  border-color: rgba(4, 4, 5, 0.4);
+} */
+
+
 #chainStatus {
   margin-top: 55px;
   margin-right: 5px;
@@ -117,4 +134,50 @@ button:hover {
   margin-right: 15px;
   text-align: right;
   font-size: 15px;
+}
+
+#artPageHeaderDiv {
+  text-align: left;
+  font-size: 15px;
+  margin-left: 40px;
+}
+
+#artFileRemoveButton {
+  margin-left: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+#artFile-input {
+  padding: 6px 6px 6px 6px;
+  text-align: center;
+}
+
+#artFile-image {
+  background-color: #ffffff;
+  padding: 6px 6px 6px 6px;
+  margin-right: 155px;
+  width: 50vh;
+  height: 50vh;
+}
+
+#artMetadata {
+  margin-bottom: 50px;
+}
+
+#artPropertiesHeader {
+  margin-bottom: 25px;
+}
+
+#artPropertiesBodyContents {
+  margin-bottom: 120px;
+}
+
+#artPropertiesButton {
+  margin-left: 400px;
+  margin-top: -40px;
+}
+
+#artLinks {
+  padding-bottom: 50px;
 }
