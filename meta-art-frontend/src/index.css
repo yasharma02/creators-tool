@@ -95,6 +95,14 @@ button:hover {
   margin: 1 100 100 100;
 }
 
+#createNewArtButton {
+  margin-top: -225px;
+  margin-right: 15px;
+  text-align: right;
+  margin-bottom: 20px;
+  margin-left: 650px;
+}
+
 #collectionTileLink {
   width: auto;
   max-height: auto;
@@ -169,7 +177,7 @@ button:hover {
   margin-bottom: 25px;
 }
 
-#artPropertiesBodyContents {
+#artPropertiesBox {
   margin-bottom: 120px;
 }
 
@@ -180,4 +188,11 @@ button:hover {
 
 #artLinks {
   padding-bottom: 50px;
+}
+
+#artMetadataValue {
+  width: 80vh;
+  height: 50vh;
+  align-self: center;
+  margin-bottom: 50px;
 }

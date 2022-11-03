@@ -31,8 +31,10 @@ const TopBar = (props) => {
       }
       setChainStatus(chainStatusString);
 
-      setWallet(address);
+      // setWallet(address);
+      setWalletAddress(address);
       // setStatus(status);
+      // console.log(walletAddress);
 
       addWalletListener();
       addChainListener();
@@ -44,10 +46,12 @@ const TopBar = (props) => {
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", (accounts) => {
         if (accounts.length > 0) {
-          setWallet(accounts[0]);
+          // setWallet(accounts[0]);
+          setWalletAddress(accounts[0]);
           // setStatus("👆🏽 Write a message in the text-field above.");
         } else {
-          setWallet("");
+          // setWallet("");
+          setWalletAddress("");
           // setStatus("🦊 Connect to Metamask using the top right button.");
         }
       });
@@ -81,10 +85,19 @@ const TopBar = (props) => {
     }
   }
 
+  const setWalletAddress = (address) => {
+    var parentCallBackData = {
+      wallet: address,
+    };
+    setWallet(address);
+    props.parentCallback(parentCallBackData);
+  };
+
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet();
     // setStatus(walletResponse.status);
-    setWallet(walletResponse.address);
+    // setWallet(walletResponse.address);
+    setWalletAddress(walletResponse.address);
   };
 
   return (

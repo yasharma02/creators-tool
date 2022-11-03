@@ -1,45 +1,60 @@
-// import logo from "./logo.svg";
 import "./App.css";
+import { useEffect, useState, createContext, Navigate } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TopBar from "./components/topBar";
 import Collection from "./pages/collection";
 import ArtPage from "./pages/art";
-import CollectionTile from "./components/collectionTile";
+import Batch from "./pages/batch";
+import Metadata from "./pages/metadata";
+// import CollectionTile from "./components/collectionTile";
+// const walletContext = createContext();
 
 function App() {
+  const [walletAddress, setWallet] = useState("");
+  // const navigate = useNavigate();
+
+  const handleCallback = (childData) => {
+    console.log(childData);
+    console.log(childData.wallet);
+    setWallet(childData.wallet);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        <TopBar />
-        {/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
+        <TopBar parentCallback={handleCallback} />
       </header>
       <body className="App-body">
         <br></br>
         <Router>
           <Routes>
-            <Route exact path="/" element={<ArtPage />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/collectiontile" element={<CollectionTile />} />
-            {/* <Route path="/batch" element={<Batch />} /> */}
+            {/*<Route
+              path="/collection"
+              element={
+                <>
+                  {() => {
+                    return <Navigate to="/collection" />;
+                  }}
+                </>
+              }
+            />*/}
+            <Route
+              exact
+              path="/"
+              element={<Collection wallet={walletAddress} />}
+            />
+            <Route
+              path="/artpage/:id"
+              element={<ArtPage wallet={walletAddress} />}
+            />
+            <Route path="/metadata" element={<Metadata />} />
+            <Route path="/batch" element={<Batch />} />
           </Routes>
         </Router>
-        {/* <br></br>
-        <CollectionTile />
-      <br></br> */}
       </body>
     </div>
   );
 }
 
 export default App;
+// export { walletContext };

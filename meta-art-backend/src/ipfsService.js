@@ -7,7 +7,7 @@ const fs = require("fs");
 
 const uploadToPinata = async (req) => {
   var data = new FormData();
-  var res;
+  var res = {};
   try {
     if (req.file) {
       console.log("file received");
@@ -43,6 +43,7 @@ const uploadToPinata = async (req) => {
     }
   } catch (error) {
     console.log(error);
+    return null;
   }
   return res;
 };

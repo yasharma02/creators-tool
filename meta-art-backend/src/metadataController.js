@@ -1,6 +1,10 @@
 const express = require("express");
 const { PORT } = require("./utils/config.js");
-const { saveToDB } = require("./dbService");
+const {
+  saveToDB,
+  getByUserAddress,
+  findByIdAndUpdate,
+} = require("./dbService");
 const { uploadToPinata } = require("./ipfsService");
 const cors = require("cors");
 const app = express();
@@ -50,18 +54,83 @@ app.post("/metadata", upload.single("file"), async (req, res) => {
       message: resp.message,
       success: resp.success,
       code: "200",
+      data: resp.data,
     });
   } else {
     return res.json({
       message: resp.message,
       success: resp.success,
       code: "500",
+      data: resp.data,
     });
   }
 });
 
-app.get("/metadata/:userPublicAddress", (req, res) => {
-  const userPublicAddress = req.params["userPublicAddress"];
+app.put("/metadata/:id", upload.single("file"), async (req, res) => {
+  const id = req.params["id"];
+  const body = req.body;
+  console.log(body);
+  var pinataRes = await uploadToPinata(req);
+  var newFileURL = "";
+  if (pinataRes != null && Object.keys(pinataRes).length != 0) {
+    newFileURL = `https://gateway.pinata.cloud/ipfs/${pinataRes.data.IpfsHash}`;
+  } else if (pinataRes == null) {
+    return res.json({
+      message: "error",
+      success: false,
+      code: "500",
+      data: null,
+    });
+  }
+
+  var resp = await findByIdAndUpdate(
+    id,
+    newFileURL,
+    body.description,
+    body.title,
+    body.artistName,
+    body.properties
+  );
+  console.log(resp);
+  if (resp.success) {
+    return res.json({
+      message: resp.message,
+      success: resp.success,
+      code: "200",
+      data: resp.data,
+    });
+  } else {
+    return res.json({
+      message: resp.message,
+      success: resp.success,
+      code: "500",
+      data: resp.data,
+    });
+  }
+});
+
+app.get("/metadata/:userPublicAddress", async (req, res) => {
+  const userPublicAddress = req.params["userPublicAddress"]; // req.query.userPublicAddress
+  console.log(userPublicAddress);
+  console.log(req.params);
+  var fetchResult = await getByUserAddress(userPublicAddress);
+
+  console.log(fetchResult);
+  if (fetchResult.success) {
+    return res.json({
+      message: fetchResult.message,
+      success: fetchResult.success,
+      code: "200",
+      userArtList: fetchResult.userArtList,
+    });
+  } else {
+    return res.json({
+      message: fetchResult.message,
+      success: fetchResult.success,
+      code: "500",
+      userArtList: [],
+    });
+  }
 });
 
 app.listen(PORT, () => {
