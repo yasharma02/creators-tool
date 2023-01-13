@@ -1,4 +1,4 @@
-const METADATA_URL = "http://localhost:8009/metadata"; // "https://not42.xyz/nftbot"
+const METADATA_URL = "http://localhost:8009/metadata"; //
 const API_KEY = "null";
 const API_SECRET = "null";
 

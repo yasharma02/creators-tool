@@ -1,10 +1,9 @@
 require("dotenv").config();
 
-const DB_URI =
-  "mongodb+srv://alpha-zero:UDoPac41XlFuZFKE@cluster0.aolxcqx.mongodb.net/?retryWrites=true&w=majority";
+const DB_URI = "mongodb+srv://";
 const PORT = 8009;
 const Bearer_PINATA_JWT =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIwYjM0ZTNlOC03ZDJjLTRkZTUtYTMxMS0yYmMyODEyNWIyNTIiLCJlbWFpbCI6Inlhc2hhcm1hMDJAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjlmOGZhMTI0ZmE3OTE5NGIyM2EzIiwic2NvcGVkS2V5U2VjcmV0IjoiMDVlNjgwYWQzYmU3ZjQyYTNmNjhjYTY3YzIxY2NmODM3Y2NlMjYyOGIwM2M0MWMwYThlNDgwZjRmNjgyNzA0ZCIsImlhdCI6MTY2NjYwMDY3M30.1RWT3_tkYSbJL1fhLGRgSRrOqr96m-qhyz-HbS34lnk";
+  "Bearer eyJhbGciOiJIUzI1NiIsITRkZTUtYTMxMS0yYmqr96m-qhyz-HbS34lnk";
 
 module.exports = {
   PORT: process.env.PORT || PORT,
